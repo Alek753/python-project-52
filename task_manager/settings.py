@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 from dotenv import load_dotenv
 
 
@@ -34,7 +35,7 @@ ALLOWED_HOSTS = [
     'webserver',
     'localhost',
     '127.0.0.1',
-    'python-project-52-oyvr.onrender.com',
+    '4python-project-52-oyvr.onrender.com',
 ]
 
 

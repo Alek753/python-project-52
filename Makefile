@@ -5,7 +5,7 @@ render-start:
 	gunicorn task_manager.wsgi
 
 install:
-	uv sync
+	uv pip install -r requirements.txt
 
 migrate:
 	uv run python3 manage.py makemigrations && uv run python3 manage.py migrate

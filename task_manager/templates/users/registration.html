@@ -1,5 +1,10 @@
 {% extends "base.html" %}
+{% load django_bootstrap5 %}
 
 {% block content %}
-    <p>User registration page plug</p>
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" value="Зарегистрироваться">
+    </form>
 {% endblock %}

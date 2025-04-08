@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView,DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from .forms import RegistrationForm
+from task_manager.mixins import UserAccessMixin
 
 # Create your views here.
 class UsersListView(ListView):
@@ -18,10 +19,16 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     success_url = reverse_lazy('login')
     success_message = 'Пользователь успешно создан!'
 
-class UserUpdateView(SuccessMessageMixin, UpdateView):
+class UserUpdateView(SuccessMessageMixin, UserAccessMixin, UpdateView):
     model = User
     form_class = RegistrationForm
     template_name = 'users/update.html'
     success_url = reverse_lazy('users')
     success_message = 'Пользователь успешно отредактирован!'
-#    context_object_name = 'user_update'
+    permission_message =  'У вас нет прав для изменения другого пользователя.'
+
+class UserDeleteView(SuccessMessageMixin, DeleteView):
+    model = User
+    template_name = 'users/delete.html'
+    success_url = reverse_lazy('users')
+    success_message = 'Пользователь успешно удален!'

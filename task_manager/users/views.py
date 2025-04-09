@@ -23,12 +23,13 @@ class UserUpdateView(SuccessMessageMixin, UserAccessMixin, UpdateView):
     model = User
     form_class = RegistrationForm
     template_name = 'users/update.html'
-    success_url = reverse_lazy('users')
+    success_url = reverse_lazy('users:list')
     success_message = 'Пользователь успешно отредактирован!'
-    permission_message =  'У вас нет прав для изменения другого пользователя.'
+    permission_denied_message =  'У вас нет прав для изменения другого пользователя.'
 
-class UserDeleteView(SuccessMessageMixin, DeleteView):
+class UserDeleteView(SuccessMessageMixin, UserAccessMixin, DeleteView):
     model = User
     template_name = 'users/delete.html'
-    success_url = reverse_lazy('users')
+    success_url = reverse_lazy('users:list')
     success_message = 'Пользователь успешно удален!'
+    permission_denied_message =  'У вас нет прав для удаления другого пользователя.'

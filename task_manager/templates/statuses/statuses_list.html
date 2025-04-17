@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+    <h1 class="my-4">Statuses LIST</h1>
+    <a class="btn btn-primary" href="{% url 'statuses:create' %}" role="button">Создать статус</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Status name</th>
+                    <th>Creation date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if statuses %}
+                {% for status in statuses %}
+                <tr>
+                    <td>{{ status.id }}</td>
+                    <td>{{ status.name }}</td>
+                    <td>{{ status.created_at }}</td>
+                    <td>
+                        <a href="{% url 'statuses:update' status.id %}">Изменить</a>
+                        <br>
+                        <a href="{% url 'statuses:delete' status.id %}">Удалить</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+{% endblock %}

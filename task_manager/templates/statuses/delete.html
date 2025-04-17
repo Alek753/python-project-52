@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1 class="my-4">Удаление пользователя {{ user.username }}</h1>
+    <h1 class="my-4">Удаление статуса {{ status.name }}</h1>
     <form method="post">
         {% csrf_token %}
         <input type="submit" value="Удалить">

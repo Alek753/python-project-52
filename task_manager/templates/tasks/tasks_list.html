@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+    <h1 class="my-4">Tasks LIST</h1>
+    <a class="btn btn-primary" href="{% url 'tasks:create' %}" role="button">Создать задачу</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Task name</th>
+                    <th>Status</th>
+                    <th>Author</th>
+                    <th>Executor</th>
+                    <th>Creation date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if tasks %}
+                {% for task in tasks %}
+                <tr>
+                    <td>{{ task.id }}</td>
+                    <td>{{ task.name }}</td>
+                    <td>{{ task.status }}</td>
+                    <td>{{ task.author }}</td>
+                    <td>{{ task.executor }}</td>
+                    <td>{{ task.created_at }}</td>
+                    <td>
+                        <a href="{% url 'tasks:update' task.id %}">Изменить</a>
+                        <br>
+                        <a href="{% url 'tasks:delete' task.id %}">Удалить</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+{% endblock %}

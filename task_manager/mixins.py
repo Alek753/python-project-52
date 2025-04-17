@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 
 class UserAccessMixin(UserPassesTestMixin):
 #    login_url = reverse_lazy('login')
-    permission_url = reverse_lazy('users:list')
+#    permission_url = reverse_lazy('users:list')
 #    permission_denied_message = 'У вас нет прав для изменения другого пользователя.'
 
     def test_func(self):

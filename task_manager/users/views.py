@@ -26,6 +26,7 @@ class UserUpdateView(SuccessMessageMixin, UserAccessMixin, UpdateView):
     success_url = reverse_lazy('users:list')
     success_message = 'Пользователь успешно отредактирован!'
     permission_denied_message =  'У вас нет прав для изменения другого пользователя.'
+    permission_url = reverse_lazy('users:list')
 
 class UserDeleteView(SuccessMessageMixin, UserAccessMixin, DeleteView):
     model = User
@@ -33,3 +34,4 @@ class UserDeleteView(SuccessMessageMixin, UserAccessMixin, DeleteView):
     success_url = reverse_lazy('users:list')
     success_message = 'Пользователь успешно удален!'
     permission_denied_message =  'У вас нет прав для удаления другого пользователя.'
+    permission_url = reverse_lazy('users:list')

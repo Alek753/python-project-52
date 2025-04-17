@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import Task
 from .forms import TaskCreateForm
-from task_manager.mixins import UserAccessMixin
+from task_manager.mixins import TaskAccessMixin
 
 # Create your views here.
 class TasksListView(ListView):
@@ -33,7 +33,7 @@ class TaskUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     success_message = 'Задача успешно отредактирована!'
 #    permission_denied_message =  'У вас нет прав для изменения чужой задачи'
 
-class TaskDeleteView(SuccessMessageMixin, UserAccessMixin, DeleteView):
+class TaskDeleteView(SuccessMessageMixin, TaskAccessMixin, DeleteView):
     model = Task
     template_name = 'tasks/delete.html'
     success_url = reverse_lazy('tasks:list')

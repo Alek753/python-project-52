@@ -6,7 +6,8 @@
     <form method="post">
         {% csrf_token %}
         {% bootstrap_form form %}
-        <input type="submit" value="Изменить">
-        <button onclick="window.history.back();">Отмена</button>
+        <input type="submit" class ="btn btn-primary" value="Изменить">
+        <a href="{{ view.get_success_url }}" class="btn btn-secondary">Отмена</a>
+<!--        <button onclick="window.history.back();">Отмена</button>-->
     </form>
 {% endblock %}

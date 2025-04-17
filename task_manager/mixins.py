@@ -14,3 +14,12 @@ class UserAccessMixin(UserPassesTestMixin):
     def handle_no_permission(self):
         messages.error(self.request, self.permission_denied_message)
         return redirect(self.permission_url)
+
+class TaskAccessMixin(UserPassesTestMixin):
+
+    def test_func(self):
+        return self.request.user == self.get_object().author
+
+    def handle_no_permission(self):
+        messages.error(self.request, self.permission_denied_message)
+        return redirect(self.permission_url)

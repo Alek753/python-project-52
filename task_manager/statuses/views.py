@@ -26,11 +26,9 @@ class StatusUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     template_name = 'statuses/update.html'
     success_url = reverse_lazy('statuses:list')
     success_message = 'Статус успешно отредактирован!'
-#    permission_denied_message =  'У вас нет прав для изменения другого пользователя.'
 
 class StatusDeleteView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = Status
     template_name = 'statuses/delete.html'
     success_url = reverse_lazy('statuses:list')
     success_message = 'Статус успешно удален!'
-#    permission_denied_message =  'У вас нет прав для удаления другого пользователя.'

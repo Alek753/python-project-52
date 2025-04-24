@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+    <h1 class="my-4">Labels</h1>
+    <a class="btn btn-primary" href="{% url 'labels:create' %}" role="button">Создать метку</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Creation date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if labels %}
+                {% for label in labels %}
+                <tr>
+                    <td>{{ label.id }}</td>
+                    <td>{{ label.name }}</td>
+                    <td>{{ label.created_at }}</td>
+                    <td>
+                        <a href="{% url 'statuses:update' status.id %}">Изменить</a>
+                        <br>
+                        <a href="{% url 'statuses:delete' status.id %}">Удалить</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+{% endblock %}

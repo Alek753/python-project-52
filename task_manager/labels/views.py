@@ -10,7 +10,7 @@ from .forms import LabelCreateForm
 # Create your views here.
 class LabelsListView(ListView):
     model = Label
-    template_name = 'labesl/labels_list.html'
+    template_name = 'labels/labels_list.html'
     context_object_name = 'labels'
 
 class LabelCreateView(SuccessMessageMixin, CreateView):
@@ -25,10 +25,10 @@ class LabelUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     form_class = LabelCreateForm
     template_name = 'labels/update.html'
     success_url = reverse_lazy('labels:list')
-    success_message = 'Статус успешно отредактирован!'
+    success_message = 'Метка успешно отредактирована!'
 
 class LabelDeleteView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = Label
     template_name = 'labels/delete.html'
     success_url = reverse_lazy('labels:list')
-    success_message = 'Статус успешно удален!'
+    success_message = 'Метка успешно удалена!'

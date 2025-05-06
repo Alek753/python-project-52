@@ -3,7 +3,16 @@
 
 {% block content %}
     <h1 class="my-4">Tasks LIST</h1>
-    <a class="btn btn-primary" href="{% url 'tasks:create' %}" role="button">Создать задачу</a>
+    <a class="btn btn-primary mb-3" href="{% url 'tasks:create' %}" role="button">Создать задачу</a>
+    <div class="card mb-3">
+        <div class="card-body bg-light">
+            <form method="get">
+                {% csrf_token %}
+                {% bootstrap_form filter.form %}
+                <input class="btn btn-primary" type="submit" value="Показать">
+            </form>
+        </div>
+    </div>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -21,7 +30,7 @@
                     {% for task in tasks %}
                     <tr>
                         <td>{{ task.id }}</td>
-                        <td>{{ task.name }}</td>
+                        <td><a class="link" href="{% url 'tasks:details' task.id %}">{{ task.name }}</a></td>
                         <td>{{ task.status }}</td>
                         <td>{{ task.author }}</td>
                         <td>{{ task.executor }}</td>

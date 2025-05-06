@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import Label
 from .forms import LabelCreateForm
+from task_manager.mixins import ProtectedErrorMixin
 
 # Create your views here.
 class LabelsListView(ListView):
@@ -27,8 +28,10 @@ class LabelUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('labels:list')
     success_message = 'Метка успешно отредактирована!'
 
-class LabelDeleteView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
+class LabelDeleteView(SuccessMessageMixin, LoginRequiredMixin, ProtectedErrorMixin, DeleteView):
     model = Label
     template_name = 'labels/delete.html'
     success_url = reverse_lazy('labels:list')
     success_message = 'Метка успешно удалена!'
+    permission_url = reverse_lazy('labels:list')
+    error_message = "Невозможно удалить метку, потому что она используется!"

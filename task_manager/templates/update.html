@@ -3,11 +3,11 @@
 {% load i18n %}
 
 {% block content %}
+    <h1 class="my-4">{{ title }}</h1>
     <form method="post">
-        <h1 class="my-4">{% translate 'Create status' %}</h1>
         {% csrf_token %}
         {% bootstrap_form form %}
-        <input type="submit" value="{% translate 'Create' %}">
+        <input type="submit" class="btn btn-primary" value="{% translate 'Update' %}">
         <a href="{{ view.get_success_url }}" class="btn btn-secondary">{% translate 'Cancel' %}</a>
     </form>
 {% endblock %}

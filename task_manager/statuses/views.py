@@ -4,6 +4,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+
 from .models import Status
 from .forms import StatusCreateForm
 
@@ -13,22 +15,24 @@ class StatusesListView(ListView):
     template_name = 'statuses/statuses_list.html'
     context_object_name = 'statuses'
 
-class StatusCreateView(SuccessMessageMixin, CreateView):
+class StatusCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     model = Status
     form_class = StatusCreateForm
-    template_name = 'statuses/status_create.html'
+    template_name = 'simple_create.html'
+    extra_context = {'title': _('Create status')}
     success_url = reverse_lazy('statuses:list')
-    success_message = 'Статус успешно создан!'
+    success_message = _('Status succesfully created')
 
 class StatusUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Status
     form_class = StatusCreateForm
     template_name = 'statuses/update.html'
     success_url = reverse_lazy('statuses:list')
-    success_message = 'Статус успешно отредактирован!'
+    success_message = _('Status successfully updated')
 
 class StatusDeleteView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = Status
-    template_name = 'statuses/delete.html'
+    template_name = 'delete.html'
+    extra_context = {'title': _('Removing status')}
     success_url = reverse_lazy('statuses:list')
-    success_message = 'Статус успешно удален!'
+    success_message = _('Status successfully removed')

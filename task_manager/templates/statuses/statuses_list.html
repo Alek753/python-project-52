@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 {% load django_bootstrap5 %}
+{% load i18n %}
 
 {% block content %}
-    <h1 class="my-4">Statuses LIST</h1>
-    <a class="btn btn-primary" href="{% url 'statuses:create' %}" role="button">Создать статус</a>
+    <h1 class="my-4">{% translate 'Statuses' %}</h1>
+    <a class="btn btn-primary" href="{% url 'statuses:create' %}" role="button">{% translate 'Create status' %}</a>
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Status name</th>
-                    <th>Creation date</th>
+                    <th>{% translate 'ID' %}</th>
+                    <th>{% translate 'Name' %}</th>
+                    <th>{% translate 'Creation date' %}</th>
                     <th></th>
                 </tr>
             </thead>
@@ -21,9 +22,9 @@
                     <td>{{ status.name }}</td>
                     <td>{{ status.created_at }}</td>
                     <td>
-                        <a href="{% url 'statuses:update' status.id %}">Изменить</a>
+                        <a href="{% url 'statuses:update' status.id %}">{% translate 'Update' %}</a>
                         <br>
-                        <a href="{% url 'statuses:delete' status.id %}">Удалить</a>
+                        <a href="{% url 'statuses:delete' status.id %}">{% translate 'Delete' %}</a>
                     </td>
                 </tr>
                 {% endfor %}

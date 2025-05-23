@@ -1,13 +1,14 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block content %}
 
 <h1 class="my-4"></h1>
 <div class="card rounded">
     <div class="card-body p-5 bg-light">
-        <div class="display-4">Привет от Хекслета!</div>
+        <div class="display-4">{% translate "Hello from Hexlet!" %}</div>
         <p class="lead">Практические курсы по программированию</p>
         <hr>
-        <a class="btn btn-lg btn-primary" href="https://ru.hexlet.io">Узнать больше &raquo;</a>
+        <a class="btn btn-lg btn-primary" href="https://ru.hexlet.io">{% translate "Learn more" %} &raquo;</a>
     </div>
 </div>
 {% endblock %}

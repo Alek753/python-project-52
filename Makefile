@@ -12,3 +12,9 @@ migrate:
 
 dev:
 	uv run python3 manage.py runserver
+
+lint:
+	uv run ruff check .
+
+test:
+	uv run python3 manage.py test

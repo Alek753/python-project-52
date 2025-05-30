@@ -1,8 +1,9 @@
-from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.db.models import ProtectedError
+from django.utils.translation import gettext as _
 
 
 class UserAccessMixin(UserPassesTestMixin):
@@ -36,3 +37,14 @@ class ProtectedErrorMixin:
         except ProtectedError:
             messages.error(request, self.error_message)
             return redirect(self.permission_url)
+
+
+class UserLoginMixin(LoginRequiredMixin):
+    login_url = reverse_lazy('login')
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            messages.error(
+                request, _("You are not logged in! Please sign in."))
+            return self.handle_no_permission()
+        return super().dispatch(request, *args, **kwargs)

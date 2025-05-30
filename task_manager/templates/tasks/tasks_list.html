@@ -1,27 +1,28 @@
 {% extends "base.html" %}
 {% load django_bootstrap5 %}
+{%  load i18n %}
 
 {% block content %}
-    <h1 class="my-4">Tasks LIST</h1>
-    <a class="btn btn-primary mb-3" href="{% url 'tasks:create' %}" role="button">Создать задачу</a>
+    <h1 class="my-4">{% translate 'Tasks' %}</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'tasks:create' %}" role="button">{% translate 'Create task' %}</a>
     <div class="card mb-3">
         <div class="card-body bg-light">
             <form method="get">
                 {% csrf_token %}
                 {% bootstrap_form filter.form %}
-                <input class="btn btn-primary" type="submit" value="Показать">
+                <input class="btn btn-primary" type="submit" value="{% translate 'Show' %}">
             </form>
         </div>
     </div>
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Task name</th>
-                    <th>Status</th>
-                    <th>Author</th>
-                    <th>Executor</th>
-                    <th>Creation date</th>
+                    <th>{% translate 'ID' %}</th>
+                    <th>{% translate 'Name' %}</th>
+                    <th>{% translate 'Status' %}</th>
+                    <th>{% translate 'Author' %}</th>
+                    <th>{% translate 'Executor' %}</th>
+                    <th>{% translate 'Creation date' %}</th>
                     <th></th>
                 </tr>
             </thead>
@@ -34,11 +35,11 @@
                         <td>{{ task.status }}</td>
                         <td>{{ task.author }}</td>
                         <td>{{ task.executor }}</td>
-                        <td>{{ task.created_at }}</td>
+                        <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
                         <td>
-                            <a href="{% url 'tasks:update' task.id %}">Изменить</a>
+                            <a href="{% url 'tasks:update' task.id %}">{% translate 'Update' %}</a>
                             <br>
-                            <a href="{% url 'tasks:delete' task.id %}">Удалить</a>
+                            <a href="{% url 'tasks:delete' task.id %}">{% translate 'Delete' %}</a>
                         </td>
                     </tr>
                     {% endfor %}

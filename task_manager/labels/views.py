@@ -18,14 +18,16 @@ class LabelsListView(ListView):
 class LabelCreateView(SuccessMessageMixin, CreateView):
     model = Label
     form_class = LabelCreateForm
-    template_name = 'labels/label_create.html'
+    extra_context = {'title': _('Create label'),}
+    template_name = 'simple_create.html'
     success_url = reverse_lazy('labels:list')
     success_message = _('Label successfully creted')
 
 class LabelUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Label
     form_class = LabelCreateForm
-    template_name = 'labels/update.html'
+    extra_context = {'title': _('Update label'),}
+    template_name = 'update.html'
     success_url = reverse_lazy('labels:list')
     success_message = _('Label successfully updated')
 

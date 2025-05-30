@@ -26,7 +26,8 @@ class UserCreateView(SuccessMessageMixin, CreateView):
 class UserUpdateView(SuccessMessageMixin, UserAccessMixin, UpdateView):
     model = User
     form_class = RegistrationForm
-    template_name = 'users/update.html'
+    extra_context = {'title': _('Update user')}
+    template_name = 'update.html'
     success_url = reverse_lazy('users:list')
     success_message = _('User successfully updated')
     permission_denied_message =  _('You have no rights to update another user')

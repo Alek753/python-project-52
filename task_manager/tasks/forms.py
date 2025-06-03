@@ -1,7 +1,10 @@
 from django import forms
-from django_filters import FilterSet, BooleanFilter, ModelChoiceFilter
-from .models import Task
+from django_filters import BooleanFilter, FilterSet, ModelChoiceFilter
+
 from task_manager.labels.models import Label
+
+from .models import Task
+
 
 class TaskCreateForm(forms.ModelForm):
     class Meta:

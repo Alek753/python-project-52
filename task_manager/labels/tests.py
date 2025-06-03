@@ -1,6 +1,7 @@
-from django.test import TestCase
-from django.urls import reverse
 from django.core.exceptions import ObjectDoesNotExist
+from django.test import TestCase  # noqa: F401
+from django.urls import reverse
+
 from .models import Label
 
 

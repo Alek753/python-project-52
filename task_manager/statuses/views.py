@@ -1,19 +1,19 @@
-from django.shortcuts import render
-from django.views.generic import ListView, CreateView, UpdateView,DeleteView
-from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-from .models import Status
 from .forms import StatusCreateForm
+from .models import Status
+
 
 # Create your views here.
 class StatusesListView(ListView):
     model = Status
     template_name = 'statuses/statuses_list.html'
     context_object_name = 'statuses'
+
 
 class StatusCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     model = Status
@@ -23,6 +23,7 @@ class StatusCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('statuses:list')
     success_message = _('Status successfully created')
 
+
 class StatusUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Status
     form_class = StatusCreateForm
@@ -30,6 +31,7 @@ class StatusUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     template_name = 'update.html'
     success_url = reverse_lazy('statuses:list')
     success_message = _('Status successfully updated')
+
 
 class StatusDeleteView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = Status

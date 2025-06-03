@@ -1,7 +1,7 @@
-from django.test import TestCase
-from django.urls import reverse
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
+from django.test import TestCase  # noqa: F401
+from django.urls import reverse
 
 
 class UsersTest(TestCase):
@@ -52,7 +52,10 @@ class UsersTest(TestCase):
         response = self.client.post(reverse('users:create'), user_data)
         self.client.login(username=user_data['username'], password='12qW')
         user = User.objects.get(username=user_data['username'])
-        response = self.client.post(reverse('users:user_delete', args=[user.id]))
+        response = self.client.post(reverse(
+            'users:user_delete', 
+            args=[user.id])
+        )
         self.assertRedirects(response, reverse('users:list'))
         with self.assertRaises(ObjectDoesNotExist):
             User.objects.get(username=user_data['username'])

@@ -1,10 +1,11 @@
-from django.test import TestCase
 from django.contrib.auth.models import User
+from django.test import TestCase  # noqa: F401
 from django.urls import reverse
 
-from .models import Task
-from task_manager.statuses.models import Status
 from task_manager.labels.models import Label
+from task_manager.statuses.models import Status
+
+from .models import Task
 
 
 class TaskModelTests(TestCase):
@@ -56,7 +57,8 @@ class TaskModelTests(TestCase):
     def test_task_list_view(self):
         response = self.client.get(self.tasks_url)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, f'{self.login_url}?next={self.tasks_url}')
+        self.assertEqual(response.url,
+                         f'{self.login_url}?next={self.tasks_url}')
 
         self.client.login(username="User1", password="12q")
         response = self.client.get(self.tasks_url)
@@ -73,7 +75,8 @@ class TaskModelTests(TestCase):
     def test_task_detail_view(self):
         response = self.client.get(self.task_detail_url)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, f'{self.login_url}?next={self.task_detail_url}')
+        self.assertEqual(response.url,
+                         f'{self.login_url}?next={self.task_detail_url}')
 
         self.client.login(username="User1", password="12q")
         response = self.client.get(self.task_detail_url)
@@ -96,7 +99,8 @@ class TaskModelTests(TestCase):
     def test_task_create_view(self):
         response = self.client.get(self.task_create_url)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, f'{self.login_url}?next={self.task_create_url}')
+        self.assertEqual(response.url,
+                         f'{self.login_url}?next={self.task_create_url}')
 
         self.client.login(username="User1", password="12q")
         response = self.client.get(self.task_create_url)
@@ -137,7 +141,8 @@ class TaskModelTests(TestCase):
     def test_task_update_view(self):
         response = self.client.get(self.task_update_url)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, f'{self.login_url}?next={self.task_update_url}')
+        self.assertEqual(response.url,
+                         f'{self.login_url}?next={self.task_update_url}')
 
         self.client.login(username="User1", password="12q")
         response = self.client.get(self.task_update_url)

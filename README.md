@@ -1,5 +1,6 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Alek753/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Alek753/python-project-52/actions)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Alek753_python-project-52&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Alek753_python-project-52)
 
 
 # Проект 4: Менеджер задач (Task manager)

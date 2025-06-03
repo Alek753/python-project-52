@@ -39,6 +39,7 @@ ALLOWED_HOSTS = [
     'python-project-52-oyvr.onrender.com',
 ]
 
+LOGIN_URL = 'login'
 
 # Application definition
 

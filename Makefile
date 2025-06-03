@@ -17,4 +17,4 @@ lint:
 	uv run ruff check .
 
 test:
-	uv run python3 manage.py test
+	uv run python3 manage.py test 2>&1 | tee -a test.txt

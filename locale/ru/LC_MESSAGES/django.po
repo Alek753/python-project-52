@@ -250,7 +250,7 @@ msgstr "Полное имя"
 
 #: task_manager/users/views.py:25
 msgid "User successfully created"
-msgstr "Пользователь успешно создан"
+msgstr "Пользователь успешно зарегистрирован"
 
 #: task_manager/users/views.py:31
 msgid "Update user"

@@ -48,5 +48,6 @@ class UserDeleteView(UserAccessMixin, ProtectedErrorMixin,
     error_message = _('Cannot remove this user because it is in use')
 
     def get_success_url(self):
-        messages.success(self.request, _('User successfully removed'))
+        if not self.error_message:
+            messages.success(self.request, _('User successfully removed'))
         return '/'

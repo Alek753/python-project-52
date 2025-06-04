@@ -43,7 +43,7 @@ msgstr "Изменить метку"
 
 #: task_manager/labels/views.py:35
 msgid "Label successfully updated"
-msgstr "Метка успешно отредактирована"
+msgstr "Метка успешно изменена"
 
 #: task_manager/labels/views.py:43
 msgid "Label successfully removed"

@@ -108,7 +108,7 @@ msgstr "Автор"
 #: task_manager/tasks/models.py:38
 #: task_manager/templates/tasks/tasks_list.html:24
 msgid "Executor"
-msgstr "Исполниель"
+msgstr "Исполнитель"
 
 #: task_manager/tasks/models.py:44 task_manager/templates/base.html:32
 #: task_manager/templates/labels/labels_list.html:6

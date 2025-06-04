@@ -274,7 +274,7 @@ msgstr "Пользователь успешно изменен"
 
 #: task_manager/users/views.py:36
 msgid "You have no rights to update another user"
-msgstr "У вас нет прав на изменение другого пользователя"
+msgstr "У вас нет прав для изменения другого пользователя"
 
 #: task_manager/users/views.py:44
 msgid "Removing user"
@@ -282,7 +282,7 @@ msgstr "Удаление пользователя"
 
 #: task_manager/users/views.py:45
 msgid "You have no rights to delete another user"
-msgstr "У вас нет прав на удаление другого пользователя"
+msgstr "У вас нет прав для изменения другого пользователя"
 
 #: task_manager/users/views.py:48
 msgid "User successfully removed"

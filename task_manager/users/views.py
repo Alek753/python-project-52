@@ -45,9 +45,4 @@ class UserDeleteView(UserAccessMixin, ProtectedErrorMixin,
     extra_context = {'title': _('Removing user')}
     permission_denied_message = _('You have no rights to delete another user')
     permission_url = reverse_lazy('users:list')
-    error_message = _('Cannot remove this user because it is in use')
-
-    def get_success_url(self):
-        if not self.error_message:
-            messages.success(self.request, _('User successfully removed'))
-        return '/'
+    success_url = reverse_lazy('users:list')

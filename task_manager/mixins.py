@@ -29,12 +29,13 @@ class TaskAccessMixin(UserPassesTestMixin):
 class ProtectedErrorMixin:
     error_message = ''
     permission_url = '/'
+
     def post(self, request, *args, **kwargs):
         try:
             response = super().delete(request, *args, **kwargs)
             return response
         except ProtectedError:
-            messages.error(request, self.error_message)
+            messages.error(self.request, self.error_message)
             return redirect(self.permission_url)
 
 

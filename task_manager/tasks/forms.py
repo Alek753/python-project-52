@@ -19,7 +19,8 @@ class TaskFilter(FilterSet):
         method='get_user_tasks')
 
     labels = ModelChoiceFilter(
-        queryset=Label.objects.all()
+        queryset=Label.objects.all(),
+	label=_('Label')
     )
 
     class Meta:

@@ -49,4 +49,4 @@ class UserDeleteView(UserAccessMixin, ProtectedErrorMixin,
 
     def get_success_url(self):
         messages.success(self.request, _('User successfully removed'))
-        return '/users/'
+        return '/'

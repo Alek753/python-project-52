@@ -7,6 +7,14 @@ from task_manager.statuses.models import Status
 
 
 # Create your models here.
+class UserFullName(User):
+    class Meta:
+        proxy = True
+
+    def __str__(self):
+        return self.get_full_name()
+
+
 class Task(models.Model):
     name = models.CharField(
         max_length=100,
@@ -24,13 +32,13 @@ class Task(models.Model):
         verbose_name=_('Status')
     )
     author = models.ForeignKey(
-        User,
+        UserFullName,
         on_delete=models.PROTECT,
         related_name='author',
         verbose_name=_('Author')
     )
     executor = models.ForeignKey(
-        User,
+        UserFullName,
         on_delete=models.PROTECT,
         related_name='executor',
         blank=True,

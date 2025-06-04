@@ -7,7 +7,6 @@ from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from django.views.generic.edit import DeletionMixin
 
 from task_manager.mixins import ProtectedErrorMixin, UserAccessMixin
-
 from .forms import RegistrationForm
 
 

@@ -1,8 +1,8 @@
 from django import forms
 from django_filters import BooleanFilter, FilterSet, ModelChoiceFilter
+from django.utils.translation import gettext_lazy as _
 
 from task_manager.labels.models import Label
-
 from .models import Task
 
 
@@ -15,7 +15,7 @@ class TaskCreateForm(forms.ModelForm):
 class TaskFilter(FilterSet):
     user_tasks = BooleanFilter(
         widget=forms.CheckboxInput(),
-        label='Только свои задачи',
+        label=_('Only your own tasks'),
         method='get_user_tasks')
 
     labels = ModelChoiceFilter(

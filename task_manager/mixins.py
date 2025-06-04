@@ -29,7 +29,6 @@ class TaskAccessMixin(UserPassesTestMixin):
 class ProtectedErrorMixin:
     error_message = ''
     permission_url = '/'
-
     def post(self, request, *args, **kwargs):
         try:
             response = super().delete(request, *args, **kwargs)

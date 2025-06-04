@@ -1,8 +1,10 @@
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+from django.views.generic.edit import DeletionMixin
 
 from task_manager.mixins import ProtectedErrorMixin, UserAccessMixin
 
@@ -36,13 +38,15 @@ class UserUpdateView(SuccessMessageMixin, UserAccessMixin, UpdateView):
     permission_url = reverse_lazy('users:list')
 
 
-class UserDeleteView(SuccessMessageMixin, UserAccessMixin,
-                     ProtectedErrorMixin, DeleteView):
+class UserDeleteView(UserAccessMixin, ProtectedErrorMixin,
+                     DeleteView):
     model = User
     template_name = 'delete.html'
     extra_context = {'title': _('Removing user')}
-    success_url = reverse_lazy('users:list')
-    success_message = _('User successfully removed')
     permission_denied_message = _('You have no rights to delete another user')
     permission_url = reverse_lazy('users:list')
     error_message = _('Cannot remove this user because it is in use')
+
+    def get_success_url(self):
+        messages.success(self.request, _('User successfully removed'))
+        return reverse_lazy('users:list')

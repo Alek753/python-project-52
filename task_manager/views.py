@@ -23,6 +23,6 @@ class UserLogoutView(LogoutView):
     success_message = _('You are logged out')
 
     def dispatch(self, request, *args, **kwargs):
-        messages.success(request, _('You are logged out'))
+        messages.success(request, self.success_message)
         return super().dispatch(request, *args, **kwargs)
 

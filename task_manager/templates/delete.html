@@ -6,7 +6,7 @@
     <form method="post">
         {% csrf_token %}
         <input type="submit" class="btn btn-danger" value="{% translate 'Yes, delete' %}">
-        <a href="{{ view.get_success_url }}" class="btn btn-secondary">{% translate 'Cancel' %}</a>
+        <a href="{% url 'users:list' %}" class="btn btn-secondary">{% translate 'Cancel' %}</a>
     </form>
     <br>
 {% endblock %}

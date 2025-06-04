@@ -33,7 +33,7 @@ class ProtectedErrorMixin:
     def post(self, request, *args, **kwargs):
         try:
             response = super().delete(request, *args, **kwargs)
-            messages.success(self.request, _('User successfully removed'))
+            messages.success(self.request, self.success_message)
             return response
         except ProtectedError:
             self.error_message = _('Cannot remove this user because it is in use')

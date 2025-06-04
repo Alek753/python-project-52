@@ -46,3 +46,5 @@ class UserDeleteView(UserAccessMixin, ProtectedErrorMixin,
     permission_denied_message = _('You have no rights to delete another user')
     permission_url = reverse_lazy('users:list')
     success_url = reverse_lazy('users:list')
+    success_message = _('User successfully removed')
+

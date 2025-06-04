@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-04 15:02+0400\n"
+"POT-Creation-Date: 2025-06-04 16:13+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,10 +52,6 @@ msgstr "Метка успешно удалена"
 #: task_manager/labels/views.py:45
 msgid "Cannot delete label because its in use"
 msgstr "Невозможно удалить метку, потому что она используется"
-
-#: task_manager/mixins.py:36
-msgid "User successfully removed"
-msgstr "Пользователь успешно удален"
 
 #: task_manager/mixins.py:39
 msgid "Cannot remove this user because it is in use"
@@ -279,6 +275,10 @@ msgstr "Удаление пользователя"
 #: task_manager/users/views.py:46
 msgid "You have no rights to delete another user"
 msgstr "У вас нет прав на удаление другого пользователя"
+
+#: task_manager/users/views.py:49
+msgid "User successfully removed"
+msgstr "Пользователь успешно удален"
 
 #: task_manager/views.py:17
 msgid "You are logged in"

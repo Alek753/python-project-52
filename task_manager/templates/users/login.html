@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% load django_bootstrap5 %}
+{% load i18n %}
 
 {% block content %}
     <form method="post">
         {% csrf_token %}
         {% bootstrap_form form %}
-        <input type="submit" value="Вход">
+        <input type="submit" value="{% translate 'Log in' %}">
     </form>
 {% endblock %}

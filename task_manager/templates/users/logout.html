@@ -1,8 +1,9 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
     <form method="post">
         {% csrf_token %}
-        <input type="submit" value="Подтвердите выход">
+        <input type="submit" value="{% translate 'Confirm logout' %}">
     </form>
 {% endblock %}

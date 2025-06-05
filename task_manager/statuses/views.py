@@ -41,5 +41,5 @@ class StatusDeleteView(SuccessMessageMixin, LoginRequiredMixin,
     template_name = 'delete.html'
     extra_context = {'title': _('Removing status')}
     success_url = reverse_lazy('statuses:list')
-    permission_url = reverse_lazy('users:list')
+    permission_url = reverse_lazy('statuses:list')
     success_message = _('Status successfully removed')

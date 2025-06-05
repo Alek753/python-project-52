@@ -6,6 +6,7 @@ from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 from .forms import StatusCreateForm
 from .models import Status
+from task_manager.mixins import ProtectedErrorMixin
 
 
 # Create your views here.
@@ -33,9 +34,12 @@ class StatusUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     success_message = _('Status successfully updated')
 
 
-class StatusDeleteView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
+class StatusDeleteView(SuccessMessageMixin, LoginRequiredMixin, 
+                       ProtectedErrorMixin,DeleteView):
     model = Status
+    error_message = _('Cannot remove this status because it is in use')
     template_name = 'delete.html'
     extra_context = {'title': _('Removing status')}
     success_url = reverse_lazy('statuses:list')
+    permission_url = reverse_lazy('users:list')
     success_message = _('Status successfully removed')

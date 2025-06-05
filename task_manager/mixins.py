@@ -28,7 +28,7 @@ class TaskAccessMixin(UserPassesTestMixin):
 
 class ProtectedErrorMixin:
     error_message = None
-    permission_url = '/users/'
+    permission_url = '/'
 
     def post(self, request, *args, **kwargs):
         try:
@@ -36,7 +36,6 @@ class ProtectedErrorMixin:
             messages.success(self.request, self.success_message)
             return response
         except ProtectedError:
-            self.error_message = _('Cannot remove this user because it is in use')
             messages.error(self.request, self.error_message)
             return redirect(self.permission_url)
 

@@ -40,6 +40,7 @@ class UserUpdateView(SuccessMessageMixin, UserAccessMixin, UpdateView):
 class UserDeleteView(UserAccessMixin, ProtectedErrorMixin,
                      DeleteView):
     model = User
+    error_message = _('Cannot remove this user because it is in use')
     template_name = 'delete.html'
     extra_context = {'title': _('Removing user')}
     permission_denied_message = _('You have no rights to delete another user')

@@ -1,8 +1,9 @@
 from django import forms
-from django_filters import BooleanFilter, FilterSet, ModelChoiceFilter
 from django.utils.translation import gettext_lazy as _
+from django_filters import BooleanFilter, FilterSet, ModelChoiceFilter
 
 from task_manager.labels.models import Label
+
 from .models import Task
 
 

@@ -4,9 +4,10 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
+from task_manager.mixins import ProtectedErrorMixin
+
 from .forms import StatusCreateForm
 from .models import Status
-from task_manager.mixins import ProtectedErrorMixin
 
 
 # Create your views here.
@@ -35,7 +36,7 @@ class StatusUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
 
 
 class StatusDeleteView(SuccessMessageMixin, LoginRequiredMixin, 
-                       ProtectedErrorMixin,DeleteView):
+                       ProtectedErrorMixin, DeleteView):
     model = Status
     error_message = _('Cannot remove this status because it is in use')
     template_name = 'delete.html'
